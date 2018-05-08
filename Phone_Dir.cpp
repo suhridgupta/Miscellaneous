@@ -29,7 +29,7 @@ trie *insert(trie *root,string word){
     return root;
 }
 
-void display(trie *root,string append,string word){
+void display(trie *root,string word){
     if(root->isLeaf){
         cout<<word<<'\t';
     }
@@ -39,7 +39,7 @@ void display(trie *root,string append,string word){
             if(root->next[i]){
                 flag=1;
                 word = word+(char)(i+'a');
-                display(root->next[i],append,word);
+                display(root->next[i],word);
                 word = word.substr(0,word.size()-1);
             }
         }
@@ -47,7 +47,6 @@ void display(trie *root,string append,string word){
 }
 
 trie *Search(trie *root,string word){
-    string search=word;
     trie *temp = root;
     for(int i=0;i<word.length();i++){
         if(temp->next[char2Int(word[i])] == nullptr){
@@ -56,7 +55,7 @@ trie *Search(trie *root,string word){
         }
         temp = temp->next[char2Int(word[i])];
     }
-    display(temp,word,search);
+    display(temp,word);
     return root;
 }
 
