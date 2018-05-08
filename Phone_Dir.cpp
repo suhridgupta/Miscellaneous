@@ -34,10 +34,8 @@ void display(trie *root,string word){
         cout<<word<<'\t';
     }
     else{
-        int flag = 0;
         for(int i=0;i<26;i++){
             if(root->next[i]){
-                flag=1;
                 word = word+(char)(i+'a');
                 display(root->next[i],word);
                 word = word.substr(0,word.size()-1);
