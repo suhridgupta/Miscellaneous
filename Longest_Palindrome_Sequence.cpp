@@ -26,4 +26,5 @@ int main(){
     string a;
     cin>>a;
     cout<<longestPalindrome(a)<<endl;
+    return 0;
 }
