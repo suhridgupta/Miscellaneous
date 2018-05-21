@@ -9,7 +9,7 @@ struct bridge{
 };
 
 bool sortByX(const bridge &a,const bridge &b){
-    return (a.y==b.y)?(a.x<b.x):(a.y<b.y); //If x values are equal, sort using y values
+    return (a.y==b.y)?(a.x<b.x):(a.y<b.y); //If y values are equal, sort using x values
 }
 
 int findMax(vector<bridge>&pairs,int val,int len){
