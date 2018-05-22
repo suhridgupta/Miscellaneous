@@ -15,7 +15,7 @@ int maxCross(vector<int>A,int low,int mid,int high){
 	}
 	int rsum = -INF;
 	sum = 0;
-	for(int i=mid+1;i<high;i++){
+	for(int i=mid+1;i<=high;i++){
 		sum+=A[i];
 		if(sum>rsum){
 			rsum = sum;
