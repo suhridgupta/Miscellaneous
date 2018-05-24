@@ -27,7 +27,7 @@ NODE *insertNode(NODE *h,int data){
 	return h;
 }
 
-int checkLoop(NODE *h){
+int checkLoop(NODE *h){ //This uses two pointers, and is the fastest method
 	NODE *one_step = h,*two_step = h;
 	while(one_step != NULL && two_step != NULL && two_step->next != NULL){
 		one_step = one_step->next;
