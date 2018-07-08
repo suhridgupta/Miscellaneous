@@ -38,10 +38,11 @@ int maxHistogramArea(const vector<int>&hist){
 }
 
 int maxArea(const vector< vector<int> >&arr, int m, int n){
-    vector<int>row(n,0);
+    vector<int>row(n,0); //Used to create histograms for each row
     int max_area = 0;
     for(int i=0;i<m;i++){
         for(int j=0;j<n;j++){
+            //if value is zero, histogram for that value is destroyed, otherwise height incremented
             if(arr[i][j] == 0)
                 row[j] = 0;
             else
