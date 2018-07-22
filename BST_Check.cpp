@@ -1,40 +1,41 @@
 #include <iostream>
 
+#define INF 9999
+
 using namespace std;
 
-struct tree{
-    int data;
-    struct tree *left,*right;
+struct node{
+	int data;
+	struct node *left,*right;
 };
 
-tree *newNode(int data){
-    tree *node = (tree*)malloc(sizeof(tree));
-    node->data = data;
-    node->left = nullptr;
-    node->right = nullptr;
-    return node;
+node *createNode(int data){
+	node *temp = (node*)malloc(sizeof(node));
+	temp->data = data;
+	temp->left = nullptr;
+	temp->right = nullptr;
+	return temp;
 }
 
-bool isBST(tree *root){
-    if(root == nullptr)
-        return true;
-    static tree *prev = nullptr;
-    if(!isBST(root->left))
-        return false;
-    if(prev && prev->data>=root->data){
-        prev = nullptr;
-        return false;
-    }
-    prev = root;
-    return isBST(root->right);
+bool isBST(node *root,int l,int r){
+	if(root == nullptr)
+		return true;
+	if(root->data < l || root->data > r)
+		return false;
+	if(isBST(root->left,l,root->data-1) && isBST(root->right,root->data+1,r))
+		return true;
+	return false;
+	
 }
 
-int main(){
-    tree *root = newNode(5);
-    root->left = newNode(3);
-    root->right = newNode(6);
-    root->left->right = newNode(4);
-    root->right->right = newNode(6); //Error Case
-    cout<<isBST(root)<<endl;
-    return 0;
+int main() {
+	// your code goes here
+	node *root = createNode(5);
+	root->left = createNode(3);
+	root->left->left = createNode(2);
+	root->left->right = createNode(4);
+	root->right = createNode(7);
+	root->right->left = createNode(8); //error case
+	cout<<isBST(root,-INF,INF)<<endl;
+	return 0;
 }
